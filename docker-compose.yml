@@ -1,0 +1,8 @@
+version: "3.0"
+services:
+  server:
+    build: ./docker/server
+    volumes:
+      - ./:/home/server/app
+    environment:
+      FLASK_APP: src.server:app
