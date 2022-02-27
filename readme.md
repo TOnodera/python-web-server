@@ -1,4 +1,4 @@
-#セットアップ
+# セットアップ
 
 1. docker desktopをインストールする。  
 参考URL. https://docs.docker.jp/docker-for-windows/install.html
