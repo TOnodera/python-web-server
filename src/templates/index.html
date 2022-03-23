@@ -84,28 +84,79 @@
                 <div class="field ">
                     <label class="label">題名</label>
                     <div class="control">
-                        <input name="title" class="input" type="text" placeholder="題名を入力してください。">
+                        <input id="title" name="title" class="input" type="text" placeholder="題名を入力してください。">
                     </div>
                 </div>
 
                 <div class="field">
                     <label class="label">本文</label>
                     <div class="control">
-                        <textarea name="body" class="textarea" placeholder="本文を入力してください。"></textarea>
+                        <textarea id="body" name="body" class="textarea" placeholder="本文を入力してください。"></textarea>
                     </div>
                 </div>
 
                 <div class="field is-grouped">
                     <div class="control">
-                        <button class="button is-link">登録</button>
+                        <button id="registButton" class="button is-link">登録</button>
                     </div>
                     <div class="control">
-                        <button class="button is-link is-light">クリア</button>
+                        <button type="button" id="clearButton" class="button is-link is-light">クリア</button>
                     </div>
                 </div>
             </form>
         </div>
     </main>
+    <script>
+        /**
+         * 登録ボタンを押した時の処理 
+         */
+        // 操作対象
+        const registButton = document.querySelector("#registButton");
+        // クリックされた時の操作
+        registButton.addEventListener("click", (e)=>{    
+            //タイトルを取得
+            const title = document.querySelector("#title");
+            //本文を取得
+            const body = document.querySelector("#body");
+
+            let isValid = true; //初期値は入力正しいものとして扱う
+            // タイトルの入力チェック
+            if (!title.value) {
+                // タイトルの入力がない場合の処理
+                title.classList.add("is-danger");
+                isValid = false;
+            }
+
+            // 本文の入力チェック
+            if (!body.value) {
+                // 本文の入力がない場合の処理
+                body.classList.add("is-danger");
+                isValid = false;
+            }
+
+            // 入力が不正の場合は登録しない
+            if (!isValid) {
+                e.preventDefault();
+                return;
+            }
+
+        });
+
+        /**
+         *  クリアボタンを押したときの処理 
+         */
+        // 操作対象の取得
+        const clearButton = document.querySelector("#clearButton");
+        clearButton.addEventListener("click", ()=>{
+            //タイトルを取得
+            const title = document.querySelector("#title");
+            //本文を取得
+            const body = document.querySelector("#body");
+            // クリア
+            title.value = '';
+            body.value = '';
+        });
+    </script>
 </body>
 
 </html>
